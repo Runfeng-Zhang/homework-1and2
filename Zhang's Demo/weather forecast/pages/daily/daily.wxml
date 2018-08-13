@@ -1,0 +1,6 @@
+<view class='container'>
+  <text>本日天气</text>
+  <image src='/images/weather.png' class='about-banner'></image>
+  <text>重庆</text>
+  <text>晴，28-36℃</text>
+</view>

@@ -1,0 +1,10 @@
+<view class='container'>
+  <image class='about-banner'
+  src='/images/233.png'></image>
+  <text style='font-weight:bold;font-size:60rpx'>天气预报</text>
+  <view>
+    <navigator style='display:inline;'url='/pages/daily/daily' hover-class='nav-hover'       class='nav-default' open-type='switchTab'>每天更新</navigator><text>你想要的天气</text>
+  </view>
+  
+  <text>Pink  Pig</text>
+</view>

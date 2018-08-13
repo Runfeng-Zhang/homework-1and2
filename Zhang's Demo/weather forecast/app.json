@@ -1,0 +1,22 @@
+{
+  "pages":[
+    "pages/about/about",
+    "pages/daily/daily"
+    ],
+  "tabBar":{
+    "list":[
+      {
+        "text": "今天天气",
+        "pagePath": "pages/daily/daily",
+        "iconPath": "images/icons/tj1.png",
+        "selectedIconPath": "images/icons/tj2.png"
+      },
+      {
+        "text": "关于作者",
+        "pagePath": "pages/about/about",
+        "iconPath": "images/icons/gy1.png",
+        "selectedIconPath": "images/icons/gy2.png"
+      }
+    ]
+  }
+}
