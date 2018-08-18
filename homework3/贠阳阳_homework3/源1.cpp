@@ -7,25 +7,26 @@ const double PI = 3.1415926;
 double parameter1 = 0, parameter2 = 0;//用于建立对象时用的参数
 int end_label = 0;
 class Shape
-{
-protected:
-	char shapename[30];
-public:
-	Shape()
 	{
-		strcpy_s(shapename, "Shape");
-	}
-	Shape(char *name)
-	{
-		strcpy_s(shapename, name);
-	}
-	char* getName()
-	{
-		return shapename;
-	}
-public:
-	virtual double getArea() = 0;
-};
+	protected:
+		char shapename[30];
+	public:
+		Shape()
+		{
+			strcpy_s(shapename, "Shape");
+		}
+		Shape(char *name)
+		{
+			strcpy_s(shapename, name);
+		}
+		char* getName()
+		{
+			return shapename;
+		}
+	public:
+		virtual double getArea() = 0;
+		virtual void getMessage() = 0;
+	};
 class Circle :public Shape
 {
 private:
@@ -121,49 +122,26 @@ int main()
 	void input_parameter(int,int&);
 	void change_unit(int);
 	void end_calculate();
+	Shape* shape_build(int, double, double);
 	while (true)
 	{
 		cout << "请选择所要计算的图形类型：" << endl<<"1.正方形		2.长方形		3.三角形		4.圆形"<<endl;
 	    cout << "请输入序号：";
 		cin >> shape_sequence_number;
-		switch (shape_sequence_number)
+		Shape * shape = NULL;
+		if (shape_sequence_number>=1&& shape_sequence_number<=4)
 		{
-		case 1: 
+			input_parameter(shape_sequence_number, length_unit_sequence_number);
+			shape=shape_build(shape_sequence_number, parameter1, parameter2);
+		}
+		else
 		{
-			input_parameter(shape_sequence_number,length_unit_sequence_number);
-			Square shape(parameter1);
-			shape.getMessage();
-			end_calculate();
-			break;
+			cout << endl << endl << "请正确输入计算图形的类型!" << endl << endl << endl;
+			continue;
 		}
-		case 2:
-		{
-			input_parameter(shape_sequence_number,length_unit_sequence_number);
-			Rectangle shape(parameter1, parameter2);
-			shape.getMessage();
-			end_calculate();
-			break;
-		}
-		case 3:
-		{
-			input_parameter(shape_sequence_number,length_unit_sequence_number);
-			Tritangle shape(parameter1, parameter2);
-			shape.getMessage();
-			end_calculate();
-			break;
-		}
-		case 4:
-		{
-			input_parameter(shape_sequence_number,length_unit_sequence_number);
-			Circle shape(parameter1);
-			shape.getMessage();
-			end_calculate();
-			break;
-		}
-		default:
-			cout <<endl<<endl<< "请正确输入计算图形的类型!" << endl<<endl<<endl;
-			break;
-		}
+		shape->getMessage();
+		end_calculate();
+		delete(shape);
 	}	
 	system("pause");		
 	return 0;
@@ -245,4 +223,33 @@ void end_calculate()           //结束计算
 		exit(0);
 	}
 	cout << endl << endl << endl;
+}
+Shape* shape_build(int shape_sequence_number, double parameter1, double parameter2)
+{
+	switch (shape_sequence_number)
+	{
+	case 1:
+	{
+		return new Square(parameter1);
+		break;
+	}
+	case 2:
+	{
+		return new Rectangle(parameter1, parameter2);
+		break;
+	}
+	case 3:
+	{
+		return new Tritangle(parameter1, parameter2);
+		break;
+	}
+	case 4:
+	{
+		return new Circle(parameter1);
+		break;
+	}
+	default:
+		return NULL;
+		break;
+	}
 }

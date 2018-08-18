@@ -1,5 +1,5 @@
 #pragma once
-class Triangle
+class Triangle 
 {
 private:
 	double b, h;

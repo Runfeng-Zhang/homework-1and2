@@ -1,5 +1,4 @@
 #include "Triangle.h"
-
 double Triangle::area()
 {
 	return h * b / 2;

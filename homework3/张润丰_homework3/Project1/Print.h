@@ -13,7 +13,7 @@ using namespace std;
 * height:三角形的高
 * area: 图形面积
 */
-void show(int shape, double radius = 0, double sideWidth = 0, double length = 0, double width = 0, double bottom = 0, double height = 0, double area = 0)
+void show(int shape, double radius = 0, double sideLength = 0, double length = 0, double width = 0, double bottom = 0, double height = 0, double area = 0)
 {
 	cout << endl;
 	if (shape == 1)
@@ -24,7 +24,7 @@ void show(int shape, double radius = 0, double sideWidth = 0, double length = 0,
 	}
 	if (shape == 2)
 	{
-		cout << "该正方形的边长为：" << fixed << setprecision(3) << sideWidth;
+		cout << "该正方形的边长为：" << fixed << setprecision(3) << sideLength;
 		cout << "厘米，计算所得的面积为" << fixed << setprecision(3) << area;
 		cout << "平方厘米。" << endl << endl;
 	}
@@ -42,16 +42,10 @@ void show(int shape, double radius = 0, double sideWidth = 0, double length = 0,
 		cout << "厘米，面积为：";
 		cout << fixed << setprecision(3) << area << "平方厘米。" << endl;
 	}
-	cout << "按0继续计算，按1退出程序" << endl << endl;
+	cout << "按0继续计算，按1键退出程序" << endl << endl;
 }
-
-/*
-* 选择是否退出程序
-* exit: 控制退出的布尔型参数
-*/
-int outOrIn(bool exit=0)
+void check(double radius = 0, double sideLength = 0, double length = 0, double width = 0, double bottom = 0, double height = 0)
 {
-	if (exit)
-		return 0;
+	if (radius < 0 || sideLength < 0 || length < 0 || width < 0 || bottom < 0 || height < 0)
+		cout << "请输入大于0的参数！" << endl;
 }
-
